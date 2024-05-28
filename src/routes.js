@@ -1,11 +1,11 @@
 const express = require("express");
 const { User, Property } = require("./model");
 const nodemailer = require('nodemailer');
-
+const key = require('environment')
 const router = express.Router();
 const sgMail = require('@sendgrid/mail');
 //sgMail.setApiKey('giK3qH34R5KtHkGRcZmLgA');
- sgMail.setApiKey('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');
+ sgMail.setApiKey(key.environment.secretKey);
 // Register Route
 router.post('/register', async (req, res) => {
   const { firstName, lastName, email, password,phoneNumber, userType } = req.body;
